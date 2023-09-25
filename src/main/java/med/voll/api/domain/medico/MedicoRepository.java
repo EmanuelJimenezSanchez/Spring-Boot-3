@@ -13,9 +13,10 @@ public interface MedicoRepository extends JpaRepository<Medico, Long> {
 
   Page<Medico> findByActivoTrue(Pageable paginacion);
 
+  // m.activo = 1 and - No se por que sucede un error con esta parte
   @Query("""
-      select m from Medico m
-      where m.activo = 1
+      select m from Medico m where
+      m.activo = true
       and
       m.especialidad =: especialidad
       and
